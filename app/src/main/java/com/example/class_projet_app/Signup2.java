@@ -1,16 +1,22 @@
 package com.example.class_projet_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -24,27 +30,36 @@ public class Signup2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signup2);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
         email= findViewById(R.id.emailInput);
         username= findViewById(R.id.usernameInput);
         phone = findViewById(R.id.phoneNumberInput);
         password= findViewById(R.id.password);
         signup = findViewById(R.id.signupButton);
-        FireBaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Map<String,Object> member = new HashMap<>();
-                member.put("username",username.getText().toString());
-                member.put("email",email.getText().toString());
-                member.put("phone",phone.getText().toString());
-                member.put("password",password.getText().toString());
+                member.put("username",username.getText().toString().strip());
+                member.put("email",email.getText().toString().strip());
+                member.put("phone",phone.getText().toString().strip());
+                member.put("password",password.getText().toString().strip());
+
+                db.collection("Members").add(member).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(Signup2.this,"Signed up successfully", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Signup2.this, MainActivity.class);
+                        startActivity(i);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Signup2.this,"Failure to Sign up", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }

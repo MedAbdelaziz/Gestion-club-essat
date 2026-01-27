@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassProjetApp">
         <activity
+            android:name=".MembersList"
+            android:exported="false" />
+        <activity
             android:name=".Signup2"
             android:exported="false" />
         <activity

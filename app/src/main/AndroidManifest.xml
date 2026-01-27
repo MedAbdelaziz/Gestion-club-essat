@@ -12,6 +12,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassProjetApp">
         <activity
+            android:name=".Signup2"
+            android:exported="false" />
+        <activity
+            android:name=".Signup"
+            android:exported="false"
+            android:theme="@style/Theme.ClassProjetApp" />
+        <activity
+            android:name=".item"
+            android:exported="false" />
+        <activity
+            android:name=".Meeting_item"
+            android:exported="false" />
+        <activity
+            android:name=".item_activity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivitiesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MeetingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MemberActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

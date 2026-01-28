@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassProjetApp">
         <activity
+            android:name=".ManagePvs"
+            android:exported="false" />
+        <activity
+            android:name=".ManageActivities"
+            android:exported="false" />
+        <activity
+            android:name=".ManageMeetings"
+            android:exported="false" />
+        <activity
             android:name=".MembersList"
             android:exported="false" />
         <activity

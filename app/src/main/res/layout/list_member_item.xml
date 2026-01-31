@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:text="member name"
         android:gravity="start"
-        android:textSize="18sp"></TextView>
+        android:textSize="18sp" />
 
     <ImageButton
         android:layout_width="56dp"

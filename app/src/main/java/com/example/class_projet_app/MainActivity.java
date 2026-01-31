@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         signup = findViewById(R.id.signupText);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,38 +51,36 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, AdminActivity.class);
                     startActivity(intent);
                 }
-                db.collection("Members").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            QuerySnapshot document = task.getResult();
-                            if(!document.isEmpty()){
-                                for( QueryDocumentSnapshot doc : document){
-                                    Log.d("here", ""+doc.get("username").toString().equals(user));
-                                    if(doc.get("username").toString().equals(user)){
-                                        Log.d("here",user);
-                                        if(doc.get("password").toString().equals(pass)){
-                                            Toast.makeText(MainActivity.this, "Member Login Successful!", Toast.LENGTH_SHORT).show();
-                                            // Redirect to Member Activity
-                                            Intent intent = new Intent(MainActivity.this, MemberActivity.class);
-                                            startActivity(intent);
-                                        }
-                                        else{
-                                            Toast.makeText(MainActivity.this, "Password Incorrect !", Toast.LENGTH_SHORT).show();
+                else{
+                    db.collection("Members").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                QuerySnapshot document = task.getResult();
+                                if(!document.isEmpty()){
+                                    for( QueryDocumentSnapshot doc : document){
+                                        Log.d("here", ""+doc.get("username").toString().equals(user));
+                                        if(doc.get("username").toString().equals(user)){
+                                            Log.d("here",user);
+                                            if(doc.get("password").toString().equals(pass)){
+                                                Toast.makeText(MainActivity.this, "Member Login Successful!", Toast.LENGTH_SHORT).show();
+                                                // Redirect to Member Activity
+                                                Intent intent = new Intent(MainActivity.this, MemberActivity.class);
+                                                startActivity(intent);
+                                            }
+                                            else{
+                                                Toast.makeText(MainActivity.this, "Password Incorrect !", Toast.LENGTH_SHORT).show();
+                                            }
                                         }
                                     }
+                                    Toast.makeText(MainActivity.this,"This Username dosen't exist\nRegister",Toast.LENGTH_SHORT).show();
                                 }
-                                Toast.makeText(MainActivity.this,"This Username dosen't exist\nRegister",Toast.LENGTH_SHORT).show();
+
                             }
-
+                            else Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
-                        else Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                FirebaseFirestore admins = FirebaseFirestore.getInstance();
-
-
+                    });
+                }
             }
         });
 

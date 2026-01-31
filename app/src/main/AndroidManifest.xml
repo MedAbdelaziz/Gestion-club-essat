@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassProjetApp">
         <activity
+            android:name=".MemberAdapter"
+            android:exported="false" />
+        <activity
             android:name=".ManagePvs"
             android:exported="false" />
         <activity

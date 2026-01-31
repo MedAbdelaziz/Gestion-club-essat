@@ -13,7 +13,7 @@
     <Button
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:id="@+id/add"
+        android:id="@+id/addBtn"
         android:text="+"
         android:textSize="18sp"
         android:layout_marginTop="30dp"
@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/membersList"
-            ></ListView>
+            >
+        </ListView>
 
     </androidx.cardview.widget.CardView>
 

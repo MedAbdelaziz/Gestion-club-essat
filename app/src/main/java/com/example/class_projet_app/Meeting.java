@@ -2,13 +2,15 @@ package com.example.class_projet_app;
 
 public class Meeting {
 
+    private String id;
     private String title;
     private String date;
     private String location;
     private String description;
     private String status;
 
-    public Meeting(String title, String date, String location, String description, String status) {
+    public Meeting(String id,String title, String date, String location, String description, String status) {
+        this.id = id;
         this.title = title;
         this.date = date;
         this.location = location;
@@ -16,6 +18,7 @@ public class Meeting {
         this.status = status;
     }
 
+    public String getId() {return id;}
     public String getTitle() {
         return title;
     }

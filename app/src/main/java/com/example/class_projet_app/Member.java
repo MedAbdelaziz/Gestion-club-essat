@@ -15,6 +15,10 @@ public class Member {
         this.password = password;
         this.phone = phone;
     }
+    public Member (String id, String name){
+        this.id = id;
+        this.name = name;
+    }
     public String getName(){return name;}
     public String getEmail(){return email;}
     public String getPassword(){return password;}

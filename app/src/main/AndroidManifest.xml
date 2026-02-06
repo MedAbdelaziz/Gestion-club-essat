@@ -12,7 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassProjetApp">
         <activity
-            android:name=".MemberAdapter"
+            android:name=".AddMeetingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditMeetingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddMemberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditMemberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MembersList"
+            android:exported="false" />
+        <activity
+            android:name=".MembersListActivity"
             android:exported="false" />
         <activity
             android:name=".ManagePvs"
@@ -22,9 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".ManageMeetings"
-            android:exported="false" />
-        <activity
-            android:name=".MembersList"
             android:exported="false" />
         <activity
             android:name=".Signup2"

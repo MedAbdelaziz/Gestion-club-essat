@@ -25,4 +25,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:paddingTop="8dp"/>
+    <Button
+        android:id="@+id/fillBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Auto-fill"
+        android:textColor="#FFFF"
+        android:backgroundTint="#A09999"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingVertical="0dp"
+        android:paddingHorizontal="10dp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.class_projet_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -67,6 +68,8 @@ public class AddMeetingActivity extends AppCompatActivity {
 
                     }
                 });
+                Intent intent = new Intent(AddMeetingActivity.this, ManageMeetings.class);
+                startActivity(intent);
             }
         });
     }

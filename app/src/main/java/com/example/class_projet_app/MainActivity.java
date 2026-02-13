@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, AdminActivity.class);
                     startActivity(intent);
                 }
+                else if(user.equals("admin")){
+                    Toast.makeText(MainActivity.this, "Admin Password Incorrect !", Toast.LENGTH_SHORT).show();
+                }
                 else{
                     db.collection("Members").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override

@@ -1,5 +1,6 @@
 package com.example.class_projet_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,9 +46,9 @@ public class EditMeetingActivity extends AppCompatActivity {
         statusV = findViewById(R.id.statusInput);
         status = getIntent().getStringExtra("status");
 
-        if(status.equals("upcoming"))statusV.check(R.id.status1);
-        else if (status.equals("done"))statusV.check(R.id.status2);
-        else if(status.equals("live"))statusV.check(R.id.status3);
+        if(status.equals("Upcoming"))statusV.check(R.id.status1);
+        else if (status.equals("Done"))statusV.check(R.id.status2);
+        else if(status.equals("Live"))statusV.check(R.id.status3);
         update = findViewById(R.id.updateBtn);
 
         titleV.setText(title);
@@ -80,6 +81,8 @@ public class EditMeetingActivity extends AppCompatActivity {
                         Toast.makeText(EditMeetingActivity.this, "Error Updating!",Toast.LENGTH_SHORT).show();
                     }
                 });
+                Intent intent = new Intent(EditMeetingActivity.this, ManageMeetings.class);
+                startActivity(intent);
             }
         });
     }

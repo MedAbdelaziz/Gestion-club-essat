@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".AddMeetingActivity">
+    tools:context=".EditActivityActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add New Meeting"
+                android:text="Edit Activity"
                 android:id="@+id/editText"
                 android:textSize="36sp"
                 android:textAlignment="center"
@@ -63,18 +63,6 @@
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/locationInput"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:hint="location"
-                android:padding="8dp"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                android:layout_marginTop="20dp"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -88,40 +76,16 @@
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/statusInput"
-                android:orientation="horizontal"
-                >
-                <RadioButton
-                    android:id="@+id/status1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="upcoming">
-                </RadioButton>
-                <RadioButton
-                    android:id="@+id/status2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="done">
-                </RadioButton>
-                <RadioButton
-                    android:id="@+id/status3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="live">
-                </RadioButton>
-            </RadioGroup>
+
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/addBtn"
-                android:text="Add"
+                android:id="@+id/updateBtn"
+                android:text="Update"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="#8BC34A"
+                android:backgroundTint="#00BCD4"
                 app:cornerRadius = "20dp"/>
 
         </LinearLayout>

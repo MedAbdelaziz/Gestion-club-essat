@@ -42,13 +42,14 @@ public class ManageMeetings extends AppCompatActivity {
         addBtn = findViewById(R.id.addBtn);
         meetListView = findViewById(R.id.meetingsList);
         registerForContextMenu(meetListView);
-        adapter = new ArrayAdapter<>(ManageMeetings.this, android.R.layout.simple_list_item_1);
+        adapter = new ArrayAdapter<>(ManageMeetings.this, android.R.layout.simple_list_item_1,titles);
         meetListView.setAdapter(adapter);
         fetchMeeting();
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inten = new Intent(ManageMeetings.this,AddMeetingActivity.class);
+                Intent intent = new Intent(ManageMeetings.this,AddMeetingActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -61,7 +62,7 @@ public class ManageMeetings extends AppCompatActivity {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot doc : task.getResult()){
                         Meeting meeting = new Meeting(
-                                doc.get("id").toString(),
+                                doc.getId().toString(),
                                 doc.get("title").toString(),
                                 doc.get("date").toString(),
                                 doc.get("location").toString(),
@@ -69,7 +70,7 @@ public class ManageMeetings extends AppCompatActivity {
                                 doc.get("status").toString()
                         );
                         meetList.add(meeting);
-                        titles.add(meeting.getTitle());
+                        titles.add(doc.getString("title").toString());
                     }
                     adapter.notifyDataSetChanged();
                 }
@@ -102,12 +103,16 @@ public class ManageMeetings extends AppCompatActivity {
     }
     public void deleteMeeting(Meeting selectedMeeting, int position){
         db.collection("Meetings").document(selectedMeeting.getId()).delete()
-                .addOnCompleteListener(a ->{
+                .addOnSuccessListener(a ->{
+                    meetList.remove(selectedMeeting.getTitle());
+                    titles.remove(selectedMeeting);
+                    adapter.notifyDataSetChanged();
                     Toast.makeText(ManageMeetings.this, "Deleted successfully!", Toast.LENGTH_SHORT).show();
 
                 }).addOnFailureListener(e -> {
                     Toast.makeText(ManageMeetings.this, "Delete failed", Toast.LENGTH_SHORT).show();
                 });
+
     }
     public void editMeeting(Meeting selectedMeeting){
         Intent intent = new Intent(ManageMeetings.this, EditMeetingActivity.class);

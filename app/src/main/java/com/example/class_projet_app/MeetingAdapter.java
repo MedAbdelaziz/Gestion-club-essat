@@ -38,6 +38,8 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
         // Creative status color
         if (meeting.getStatus().equals("Upcoming")) {
             holder.status.setBackgroundColor(Color.parseColor("#4CAF50"));
+        } else if (meeting.getStatus().equals("Live")) {
+            holder.status.setBackgroundColor(Color.parseColor("#FF0000"));
         } else {
             holder.status.setBackgroundColor(Color.parseColor("#9E9E9E"));
         }
